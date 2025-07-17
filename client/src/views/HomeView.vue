@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main>Conteudo</main>
+  <main class="bg-red-500">Conteudo</main>
 </template>
