@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
-
 <template>
-  <main class="bg-red-500">Conteudo</main>
+  <TheHeader />
 </template>
+
+<script setup lang="ts">
+import TheHeader from '@/components/TheHeader.vue'
+</script>
