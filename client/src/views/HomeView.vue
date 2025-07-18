@@ -26,8 +26,10 @@
       <div class="mx-0 sm:mx-10" v-else>
         <div class="flex justify-between items-center flex-col sm:flex-row">
           <div class="flex items-center pb-4 sm:pb-0 gap-2">
-            <h3 class="text-2xl">Projetos</h3>
-            <span class="text-sm relative top-px">({{ filteredProjects.length }})</span>
+            <h3 class="text-[#1F1283] text-2xl">Projetos</h3>
+            <span class="text-[#695CCD]al text-sm relative top-px"
+              >({{ filteredProjects.length }})</span
+            >
           </div>
 
           <div class="flex gap-4 sm:flex-row flex-col">
