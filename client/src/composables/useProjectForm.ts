@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useProjectStore } from '../stores/projectStore'
 import type { Project, ProjectFormData, ProjectFormErrors } from '../types/project'
@@ -127,6 +127,53 @@ export function useProjectForm() {
       loading.value = false
     }
   }
+
+  // Watchers para limpar erros dinamicamente quando campos ficam válidos
+  watch(() => form.value.name, (newName) => {
+    if (hasAttemptedSubmit.value) {
+      const nameWords = newName.trim().split(/\s+/)
+      if (nameWords.length >= 2) {
+        errors.value.name = ''
+      }
+    }
+  })
+
+  watch(() => form.value.client, (newClient) => {
+    if (hasAttemptedSubmit.value) {
+      if (newClient.trim() !== '') {
+        errors.value.client = ''
+      }
+    }
+  })
+
+  watch(() => form.value.startDate, (newStartDate) => {
+    if (hasAttemptedSubmit.value) {
+      if (newStartDate !== '') {
+        errors.value.startDate = ''
+      }
+    }
+  })
+
+  watch(() => form.value.endDate, (newEndDate) => {
+    if (hasAttemptedSubmit.value) {
+      if (newEndDate !== '') {
+        errors.value.endDate = ''
+        // Verificar se a data final ainda é válida em relação à data inicial
+        if (form.value.startDate && new Date(form.value.startDate) > new Date(newEndDate)) {
+          errors.value.endDate = 'Data final deve ser posterior à data de início'
+        }
+      }
+    }
+  })
+
+  // Watcher para verificar se a data inicial mudou e pode afetar a validação da data final
+  watch(() => form.value.startDate, (newStartDate) => {
+    if (hasAttemptedSubmit.value && form.value.endDate && newStartDate) {
+      if (new Date(newStartDate) <= new Date(form.value.endDate)) {
+        errors.value.endDate = ''
+      }
+    }
+  })
 
   return {
     form,
