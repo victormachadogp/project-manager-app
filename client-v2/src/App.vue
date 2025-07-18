@@ -14,7 +14,7 @@ import TheHeader from '@/components/TheHeader.vue'
 }
 
 body {
-  background-color: #f7f7f8;
+  background-color: #f6f6f7;
   font-family: 'Encode Sans Expanded', sans-serif;
 }
 </style>

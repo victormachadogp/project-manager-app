@@ -1,14 +1,17 @@
 <template>
   <div>
     <div v-if="!imagePreview">
-      <span class="text-[#695CCD]">Capa do projeto</span>
+      <span class="text-[#09090B]">Capa do projeto</span>
       <div
         class="flex flex-col items-center space-y-4 border border-dotted border-[#717171] p-5 mt-2"
       >
-        <IconUpload />
-        <span class="text-[#717171] text-sm"
-          >Escolha uma imagem .jpg ou .png no seu dispositivo</span
+        <div class="bg-[#f4f4f5] py-5 px-5 rounded-full flex items-center justify-center">
+          <IconImage stroke="#71717a" />
+        </div>
+        <span class="text-[#0a0a0b] text-sm font-semibold">
+          Clique para fazer upload ou arraste uma imagem</span
         >
+        <span class="text-[#717171] text-xs">Formatos suportados: JPG, PNG, GIF (máx. 5MB)</span>
         <input
           type="file"
           id="coverImage"
@@ -18,9 +21,9 @@
         />
         <label
           for="coverImage"
-          class="bg-white border border-[#695CCD] rounded-full px-8 py-2 text-[#695CCD] cursor-pointer hover:bg-[#695CCD] hover:text-white transition-colors"
+          class="bg-[#f6f6f8] text-sm border border-[#e4e4e7] rounded px-8 py-2 text-[#19191c] cursor-pointer hover:bg-[#695CCD] hover:text-white transition-colors font-medium"
         >
-          Selecionar
+          Selecionar Imagem
         </label>
       </div>
     </div>
@@ -38,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import IconUpload from '@/components/icons/IconUpload.vue'
+import IconImage from '@/components/icons/IconImage.vue'
 import IconTrash from '@/components/icons/IconTrash.vue'
 
 defineProps<{

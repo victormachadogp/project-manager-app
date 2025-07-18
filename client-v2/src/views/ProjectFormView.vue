@@ -2,15 +2,18 @@
   <div class="max-w-[1860px] mx-auto my-10">
     <ProjectFormHeader :is-editing="isEditing" />
 
-    <form @submit.prevent="handleSubmit" class="border border-[#DCDCDC] p-10 mx-5 rounded">
+    <form
+      @submit.prevent="handleSubmit"
+      class="border border-[#efeef2] p-10 mx-auto rounded bg-[#fcfbfc] max-w-2xl"
+    >
       <div class="max-w-2xl mx-auto flex flex-col justify-center">
         <div class="mb-6">
           <label
             for="name"
-            class="block mb-2 text-sm font-medium"
-            :class="errors.name ? 'text-[#9F0000]' : 'text-[#695CCD]'"
+            class="block mb-2 font-semibold"
+            :class="errors.name ? 'text-[#9F0000]' : 'text-[#09090B]'"
           >
-            Nome do projeto
+            Nome do Projeto
             <span
               class="text-xs text-[#717171] font-light"
               :class="errors.name ? 'text-[#C40000]' : 'text-[#717171]'"
@@ -34,8 +37,8 @@
         <div class="mb-6">
           <label
             for="client"
-            class="block mb-2 text-sm font-medium"
-            :class="errors.client ? 'text-[#9F0000]' : 'text-[#695CCD]'"
+            class="block mb-2 font-semibold"
+            :class="errors.client ? 'text-[#9F0000]' : 'text-[#09090B]'"
           >
             Cliente
             <span
@@ -62,8 +65,8 @@
           <div>
             <label
               for="startDate"
-              class="block mb-2 text-sm font-medium"
-              :class="errors.startDate ? 'text-[#9F0000]' : 'text-[#695CCD]'"
+              class="block mb-2 font-semibold"
+              :class="errors.startDate ? 'text-[#9F0000]' : 'text-[#09090B]'"
             >
               Data de Início
               <span
@@ -95,8 +98,8 @@
           <div>
             <label
               for="endDate"
-              class="block mb-2 text-sm font-medium"
-              :class="errors.endDate ? 'text-[#9F0000]' : 'text-[#695CCD]'"
+              class="block mb-2 font-semibold"
+              :class="errors.endDate ? 'text-[#9F0000]' : 'text-[#09090B]'"
             >
               Data Final
               <span
@@ -161,8 +164,16 @@ import { useProjectForm } from '../composables/useProjectForm'
 import { useProjectImage } from '../composables/useProjectImage'
 
 const route = useRoute()
-const { form, isEditing, loading, errors, hasAttemptedSubmit, isFormValid, handleSubmit, loadProject } =
-  useProjectForm()
+const {
+  form,
+  isEditing,
+  loading,
+  errors,
+  hasAttemptedSubmit,
+  isFormValid,
+  handleSubmit,
+  loadProject,
+} = useProjectForm()
 const { imagePreview, handleImageUpload, removeImage } = useProjectImage(form)
 
 onMounted(async () => {
