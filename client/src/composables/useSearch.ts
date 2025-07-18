@@ -16,7 +16,7 @@ export function useSearch() {
     } else {
       store.searchQuery = ''
     }
-  }, 1000)
+  }, 300)
 
   watch(searchInput, (newValue) => {
     debouncedSearch(newValue)

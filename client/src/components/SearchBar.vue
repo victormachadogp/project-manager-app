@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <div
-      class="px-3 border border-[#695CCD] bg-white flex items-center gap-3 py-1 rounded h-[57px]"
+      class="px-3 border border-[#695CCD] bg-white flex items-center gap-3 py-1 rounded h-[80px]"
     >
       <IconSearch class="text-[#695CCD]" />
       <input
