@@ -7,7 +7,7 @@ export function useSearch() {
   const showSearchBar = ref(false)
   const searchInput = ref('')
   const showRecentSearches = ref(false)
-  const lastSearchValue = ref('') // Adicionamos essa ref para guardar o último valor
+  const lastSearchValue = ref('')
 
   const debouncedSearch = debounce((query: string) => {
     if (query.length >= 3) {
