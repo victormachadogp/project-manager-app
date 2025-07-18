@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[1860px] mx-auto my-10">
+  <div class="max-w-[1860px] mx-auto">
     <ProjectFormHeader :is-editing="isEditing" />
 
     <form
