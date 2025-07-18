@@ -11,7 +11,7 @@
         v-if="projects.length === 0"
         class="flex items-center justify-center flex-col space-y-5 rounded h-screen"
       >
-        <h3 class="text-[#1F1283] font-semibold text-2xl">Nenhum Projeto</h3>
+        <h3 class="text-avocado-100 font-semibold text-2xl">Nenhum Projeto</h3>
         <span class="text-[#717171]"
           >Clique no botão abaixo para criar o primeiro e gerenciá-lo.</span
         >

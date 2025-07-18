@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#1C1930]">
+  <div class="bg-[#1C1930] shadow-custom">
     <div class="max-w-[1860px] mx-auto">
       <div class="flex justify-between items-center mx-5 sm:mx-12">
         <div class="opacity-0"></div>
