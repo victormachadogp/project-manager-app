@@ -13,5 +13,6 @@ import { RouterLink, RouterView } from 'vue-router'
 
 body {
   background-color: #f4f2ff;
+  font-family: 'Encode Sans Expanded', sans-serif;
 }
 </style>
