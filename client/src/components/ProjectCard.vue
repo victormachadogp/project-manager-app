@@ -38,6 +38,7 @@
         <button
           @click="showOptions = !showOptions"
           class="bg-white w-8 h-8 rounded-full flex justify-center"
+          ref="dropdownRef"
         >
           <span class="text-[#695CCD] font-bold">...</span>
 
@@ -116,6 +117,7 @@ const {
   handleImageError,
   handleDelete: handleDeleteFromComposable,
   project,
+  dropdownRef,
 } = useProjectCard(props.project)
 
 const { getHighlightedPartsForCurrentSearch } = useHighlight()
