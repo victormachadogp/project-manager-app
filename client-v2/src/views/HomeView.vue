@@ -1,24 +1,18 @@
 <template>
   <div>
-    <main
-      :class="[
-        'my-15 flex justify-center h-screen max-w-[1860px] rounded mx-10.5 custom-height',
-        projects.length === 0 ? 'bg-white' : '',
-      ]"
-    >
+    <main class="my-15 flex justify-center h-screen max-w-[1860px] rounded mx-10.5 custom-height">
       <div
         v-if="projects.length === 0"
-        class="flex items-center justify-center flex-col space-y-5 rounded"
+        class="flex items-center justify-center flex-col space-y-3 rounded"
       >
-        <h3 class="text-[#1F1283] font-semibold text-2xl">Nenhum Projeto</h3>
-        <span class="text-[#717171]"
-          >Clique no botão abaixo para criar o primeiro e gerenciá-lo.</span
+        <h3 class="text-[#1F1283] font-semibold text-4xl">Gerenciador de Projetos</h3>
+        <span class="text-[#717171] text-muted-foreground text-lg max-w-md mx-auto"
+          >Organize e gerencie seus projetos de forma eficiente</span
         >
         <RouterLink
           to="/project"
-          class="bg-[#695CCD] text-white px-11 py-3.5 rounded-full text-xl flex items-center gap-3"
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium border bg-background hover:text-accent-foreground h-11 rounded-md px-8 border-[#e4e4e7] bg-[#7c3bed] text-white font-bold"
         >
-          <IconAdd />
           Novo Projeto
         </RouterLink>
       </div>

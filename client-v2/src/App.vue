@@ -4,7 +4,7 @@ import TheHeader from '@/components/TheHeader.vue'
 </script>
 
 <template>
-  <TheHeader />
+  <!-- <TheHeader /> -->
   <RouterView />
 </template>
 
@@ -14,7 +14,7 @@ import TheHeader from '@/components/TheHeader.vue'
 }
 
 body {
-  background-color: #f4f2ff;
+  background-color: #f7f7f8;
   font-family: 'Encode Sans Expanded', sans-serif;
 }
 </style>
