@@ -23,7 +23,7 @@
         </RouterLink>
       </div>
 
-      <div class="mx-0 sm:mx-10" v-else>
+      <div class="mx-0 sm:mx-10 w-full" v-else>
         <div class="flex justify-between items-center flex-col sm:flex-row">
           <div class="flex items-center pb-4 sm:pb-0 gap-2">
             <h3 class="text-[#1F1283] text-2xl">Projetos</h3>
