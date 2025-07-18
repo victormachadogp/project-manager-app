@@ -72,17 +72,22 @@
                 >(Obrigatório)</span
               >
             </label>
-            <input
-              v-model="form.startDate"
-              type="date"
-              id="startDate"
-              class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2"
-              :class="
-                errors.startDate
-                  ? 'border border-[#C40000]'
-                  : 'border border-gray-300 focus:border-blue-500'
-              "
-            />
+            <div class="relative">
+              <input
+                v-model="form.startDate"
+                type="date"
+                id="startDate"
+                class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2 pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                :class="
+                  errors.startDate
+                    ? 'border border-[#C40000]'
+                    : 'border border-gray-300 focus:border-blue-500'
+                "
+              />
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <IconStartDate />
+              </div>
+            </div>
             <span v-if="errors.startDate" class="text-sm text-[#C40000] mt-1">{{
               errors.startDate
             }}</span>
@@ -100,17 +105,22 @@
                 >(Obrigatório)</span
               >
             </label>
-            <input
-              v-model="form.endDate"
-              type="date"
-              id="endDate"
-              class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2"
-              :class="
-                errors.endDate
-                  ? 'border border-[#C40000]'
-                  : 'border border-gray-300 focus:border-blue-500'
-              "
-            />
+            <div class="relative">
+              <input
+                v-model="form.endDate"
+                type="date"
+                id="endDate"
+                class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2 pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                :class="
+                  errors.endDate
+                    ? 'border border-[#C40000]'
+                    : 'border border-gray-300 focus:border-blue-500'
+                "
+              />
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <IconEndDate />
+              </div>
+            </div>
             <span v-if="errors.endDate" class="text-sm text-[#C40000] mt-1">{{
               errors.endDate
             }}</span>
@@ -139,6 +149,8 @@ import { onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import ProjectFormHeader from '../components/ProjectFormHeader.vue'
 import ProjectImageUpload from '../components/ProjectImageUpload.vue'
+import IconStartDate from '../components/icons/IconStartDate.vue'
+import IconEndDate from '../components/icons/IconEndDate.vue'
 import { useProjectForm } from '../composables/useProjectForm'
 import { useProjectImage } from '../composables/useProjectImage'
 
