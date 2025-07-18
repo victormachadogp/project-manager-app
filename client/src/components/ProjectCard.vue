@@ -63,9 +63,11 @@
     </div>
     <div class="p-5">
       <a href="#">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-[#1F1283]"></h5>
+        <h5 class="mb-2 text-xl font-bold tracking-tight text-[#1F1283]">{{ project.name }}</h5>
       </a>
-      <span class="mb-3 text-[#717171] font-bold">Cliente: <span class="font-light"></span></span>
+      <span class="mb-3 text-[#717171] font-bold"
+        >Cliente: <span class="font-normal">{{ project.client }}</span></span
+      >
     </div>
     <div class="border-t border-[##ECECEC] mx-3 pt-2">
       <div class="p-2 flex items-center gap-4">
