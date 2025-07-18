@@ -3,13 +3,15 @@ import { imageApi } from '../services/imageApi'
 import type { ApiError } from '../types/error'
 
 export function useProjectImage(form: { value: { coverImage: string } }) {
-  const imagePreview = ref<string>(form.value.coverImage)
+  const imagePreview = ref<string>(
+    form.value.coverImage ? `http://localhost:3001${form.value.coverImage}` : ''
+  )
   const error = ref<string | null>(null)
 
   watch(
     () => form.value.coverImage,
     (newValue) => {
-      imagePreview.value = newValue
+      imagePreview.value = newValue ? `http://localhost:3001${newValue}` : ''
     },
   )
 
@@ -31,7 +33,7 @@ export function useProjectImage(form: { value: { coverImage: string } }) {
 
       try {
         const imagePath = await imageApi.upload(file)
-        imagePreview.value = imagePath
+        imagePreview.value = `http://localhost:3001${imagePath}`
         form.value.coverImage = imagePath
       } catch (err) {
         const apiError = err as ApiError

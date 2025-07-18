@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { Project } from '../types/project'
 import { useProjectStore } from '../stores/projectStore'
 import defaultBackground from '../assets/default-background.png'
@@ -7,6 +7,11 @@ export function useProjectCard(initialProject: Project) {
   const store = useProjectStore()
   const showOptions = ref(false)
   const project = ref({ ...initialProject })
+
+  const imageUrl = computed(() => {
+    if (!project.value.coverImage) return defaultBackground
+    return `http://localhost:3001${project.value.coverImage}`
+  })
 
   async function toggleFavorite() {
     const updatedProject = {
@@ -49,6 +54,7 @@ export function useProjectCard(initialProject: Project) {
   return {
     showOptions,
     defaultBackground,
+    imageUrl,
     toggleFavorite,
     formatDate,
     handleDelete,

@@ -5,7 +5,7 @@
       <div
         class="h-full w-full bg-[#695ccd] rounded-t-lg bg-cover bg-center bg-no-repeat"
         :style="{
-          backgroundImage: `url(${project.coverImage || defaultBackground})`,
+          backgroundImage: `url(${imageUrl})`,
         }"
         @error="handleImageError"
       ></div>
@@ -99,7 +99,7 @@ const emit = defineEmits<{
 
 const {
   showOptions,
-  defaultBackground,
+  imageUrl,
   toggleFavorite,
   formatDate,
   handleImageError,
