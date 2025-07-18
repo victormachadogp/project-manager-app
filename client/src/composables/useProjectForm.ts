@@ -10,6 +10,7 @@ export function useProjectForm() {
 
   const isEditing = ref(false)
   const loading = ref(false)
+  const hasAttemptedSubmit = ref(false)
   const form = ref<ProjectFormData>({
     name: '',
     client: '',
@@ -72,6 +73,7 @@ export function useProjectForm() {
   }
 
   async function handleSubmit() {
+    hasAttemptedSubmit.value = true
     validateForm()
     if (Object.keys(errors.value).length > 0) return
 
@@ -131,6 +133,7 @@ export function useProjectForm() {
     errors,
     isEditing,
     loading,
+    hasAttemptedSubmit,
     isFormValid,
     handleSubmit,
     loadProject,
