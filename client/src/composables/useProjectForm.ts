@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useProjectStore } from '../stores/projectStore'
 import type { Project, ProjectFormData, ProjectFormErrors } from '../types/project'
@@ -18,6 +18,22 @@ export function useProjectForm() {
     coverImage: '',
   })
   const errors = ref<ProjectFormErrors>({})
+
+  const isFormValid = computed(() => {
+    const nameWords = form.value.name.trim().split(/\s+/)
+    const hasValidName = nameWords.length >= 2
+    const hasValidClient = form.value.client.trim() !== ''
+    const hasValidStartDate = form.value.startDate !== ''
+    const hasValidEndDate = form.value.endDate !== ''
+    const hasValidDateRange =
+      !form.value.startDate ||
+      !form.value.endDate ||
+      new Date(form.value.startDate) <= new Date(form.value.endDate)
+
+    return (
+      hasValidName && hasValidClient && hasValidStartDate && hasValidEndDate && hasValidDateRange
+    )
+  })
 
   function validateForm(): boolean {
     errors.value = {}
@@ -115,6 +131,7 @@ export function useProjectForm() {
     errors,
     isEditing,
     loading,
+    isFormValid,
     handleSubmit,
     loadProject,
   }

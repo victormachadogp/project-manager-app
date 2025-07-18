@@ -134,7 +134,13 @@
         />
 
         <button
-          class="text-white py-2 rounded-full mt-10 bg-[#695CCD] hover:bg-[#5648B0]"
+          class="text-white py-2 rounded-full mt-10 transition-colors duration-200"
+          :class="
+            !isFormValid
+              ? 'bg-[#B2A8FF] cursor-not-allowed'
+              : 'bg-[#695CCD] hover:bg-[#5648B0] cursor-pointer'
+          "
+          :disabled="!isFormValid"
           type="submit"
         >
           {{ loading ? 'Salvando...' : 'Salvar projeto' }}
@@ -155,7 +161,8 @@ import { useProjectForm } from '../composables/useProjectForm'
 import { useProjectImage } from '../composables/useProjectImage'
 
 const route = useRoute()
-const { form, isEditing, loading, errors, handleSubmit, loadProject } = useProjectForm()
+const { form, isEditing, loading, errors, isFormValid, handleSubmit, loadProject } =
+  useProjectForm()
 const { imagePreview, handleImageUpload, removeImage } = useProjectImage(form)
 
 onMounted(async () => {
