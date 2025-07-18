@@ -3,8 +3,8 @@
     <TheHeader />
     <main
       :class="[
-        'my-5 flex justify-center h-screen max-w-[1860px] mx-auto rounded',
-        projects.length === 0 ? 'bg-white mx-6' : '',
+        'my-15 flex justify-center h-screen max-w-[1860px] rounded mx-10.5',
+        projects.length === 0 ? 'bg-white' : '',
       ]"
     >
       <div
@@ -17,7 +17,7 @@
         >
         <RouterLink
           to="/project"
-          class="bg-[#695CCD] text-white px-5 py-3 rounded-full flex items-center gap-3"
+          class="bg-[#695CCD] text-white px-11 py-3.5 rounded-full text-xl flex items-center gap-3"
         >
           <IconAdd />
           Novo Projeto
