@@ -3,13 +3,13 @@
     <TheHeader />
     <main
       :class="[
-        'my-15 flex justify-center h-screen max-w-[1860px] rounded mx-10.5',
+        'my-15 flex justify-center h-screen max-w-[1860px] rounded mx-10.5 custom-height',
         projects.length === 0 ? 'bg-white' : '',
       ]"
     >
       <div
         v-if="projects.length === 0"
-        class="flex items-center justify-center flex-col space-y-5 rounded h-screen"
+        class="flex items-center justify-center flex-col space-y-5 rounded"
       >
         <h3 class="text-[#1F1283] font-semibold text-2xl">Nenhum Projeto</h3>
         <span class="text-[#717171]"
@@ -89,3 +89,9 @@ onMounted(() => {
   initializeProjects()
 })
 </script>
+
+<style scoped>
+.custom-height {
+  height: calc(100vh - 180px);
+}
+</style>
