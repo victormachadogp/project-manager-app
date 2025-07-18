@@ -1,6 +1,5 @@
 <template>
   <div>
-    <TheHeader />
     <main
       :class="[
         'my-15 flex justify-center h-screen max-w-[1860px] rounded mx-10.5 custom-height',
@@ -67,7 +66,6 @@
 import { onMounted } from 'vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 import DeleteProjectModal from '@/components/DeleteProjectModal.vue'
-import TheHeader from '@/components/TheHeader.vue'
 import ProjectFilters from '@/components/filters/ProjectFilters.vue'
 import { useProjects } from '@/composables/useProjects'
 import IconAdd from '@/components/icons/IconAdd.vue'
