@@ -17,7 +17,7 @@
         </RouterLink>
       </div>
 
-      <div class="w-full container mx-auto px-4 2xl:px-20" v-else>
+      <div class="w-full xl:container mx-auto px-4 2xl:px-20" v-else>
         <ProjectsHeader :project-count="filteredProjects.length" />
 
         <div

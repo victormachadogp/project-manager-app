@@ -1,28 +1,29 @@
 <template>
   <div class="bg-white border border-[#f2f1f3] rounded-lg pb-4 slide-up shadow-sm">
-    <div class="flex w-full justify-between pt-6 px-6">
-      <div class="flex items-center gap-3 w-full justify-between">
+    <div class="flex w-full flex-col justify-between pt-1 px-1 gap-4">
+      <div
+        v-if="imageUrl"
+        class="rounded-lg w-12 h-30 w-full flex justify-center items-center overflow-hidden relative"
+      >
+        <img
+          :src="imageUrl"
+          :alt="project.name"
+          class="w-full h-full object-cover rounded-lg"
+          @error="handleImageError"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-white/80 to-[#fff]/10 rounded-lg pointer-events-none"
+        ></div>
+      </div>
+      <div v-else class="w-full bg-[#f5f0fd] rounded-lg h-30 px-4 py-4">
+        <div class="bg-gradient-to-r from-[#7d3ced] to-[#9b69f2] rounded w-full h-full"></div>
+      </div>
+
+      <div class="flex items-center gap-3 w-full justify-between px-4">
         <div class="flex items-start gap-3">
-          <div
-            v-if="imageUrl"
-            class="bg-[#f5f0fd] rounded-lg w-12 h-12 flex justify-center items-center border border-[#dbccf9] overflow-hidden"
-          >
-            <img
-              :src="imageUrl"
-              :alt="project.name"
-              class="w-full h-full object-cover rounded-lg"
-              @error="handleImageError"
-            />
-          </div>
-          <div
-            v-else
-            class="bg-[#f5f0fd] rounded-lg w-12 h-12 inline-flex justify-center items-center border border-[#dbccf9]"
-          >
-            <div class="bg-[#8e55ef] rounded w-6 h-6"></div>
-          </div>
           <div class="flex flex-col">
             <div href="#">
-              <h5 class="text-lg font-bold tracking-tight text-[#0a0a0b]">
+              <h5 class="text-lg font-bold tracking-tight text-[#0a0a0b] line-clamp-1">
                 <template
                   v-for="part in getHighlightedPartsForCurrentSearch(project.name)"
                   :key="part.text"
@@ -32,8 +33,7 @@
                 </template>
               </h5>
             </div>
-            <span class="mb-3 text-[#717171] font-bold"
-              >Cliente:
+            <span class="mb-3 text-[#717171] font-bold text-sm">
               <span class="font-normal">
                 <template
                   v-for="part in getHighlightedPartsForCurrentSearch(project.client)"
@@ -88,7 +88,7 @@
         </div>
       </div>
     </div>
-    <div class="border-t border-[#f2f1f3] pt-2">
+    <div class="border-t border-[#f2f1f3] pt-2 px-4 flex flex-col xl:flex-row justify-between">
       <div class="p-2 flex items-center gap-2">
         <IconStartDate class="relative top-px" />
         <span class="text-[#717171] text-sm font-normal top-px relative">{{
