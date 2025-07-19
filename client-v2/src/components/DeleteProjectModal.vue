@@ -1,20 +1,26 @@
 <template>
   <ModalBase
-    title="Remover projeto"
-    :icon="IconTrash"
+    title="Excluir Projeto"
+    :icon="IconWarning"
+    icon-color="#ff0000"
     @confirm="$emit('confirm')"
     @cancel="$emit('cancel')"
   >
-    <p class="text-base text-center leading-relaxed text-gray-500">
-      Essa ação removerá definitivamente o projeto:
+    <p class="text-sm leading-relaxed text-gray-500">
+      Tem certeza que deseja excluir o projeto "{{ project?.name }}"?
     </p>
-    <h3 class="text-2xl text-[#1C1930] text-center">{{ project?.name }}</h3>
+
+    <template #description>
+      <p class="text-sm text-[#717171]">
+        Esta ação não pode ser desfeita. Todos os dados do projeto serão permanentemente removidos.
+      </p>
+    </template>
   </ModalBase>
 </template>
 
 <script setup lang="ts">
 import ModalBase from './ModalBase.vue'
-import IconTrash from './icons/IconTrash.vue'
+import IconWarning from './icons/IconWarning.vue'
 import type { Project } from '../types/project'
 
 defineProps<{
