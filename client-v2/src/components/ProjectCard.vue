@@ -1,20 +1,51 @@
 <template>
-  <div class="max-w-[346px] bg-white border border-[#DCDCDC] rounded-lg shadow pb-4">
-    <div class="relative h-[231px]">
-      <div class="w-[344px]"></div>
-      <div
-        class="h-full w-full bg-[#695ccd] rounded-t-lg bg-cover bg-center bg-no-repeat"
-        :style="{
-          backgroundImage: `url(${imageUrl})`,
-        }"
-        @error="handleImageError"
-      ></div>
-      <div
-        v-if="project.coverImage"
-        class="absolute inset-0 rounded-t-lg"
-        style="background: linear-gradient(to top, rgb(0 0 0 / 40%), rgba(0, 0, 0, 0))"
-      ></div>
-      <div class="absolute bottom-0 right-0 m-3 flex justify-center items-center gap-5">
+  <div class="max-w-[346px] bg-white border border-[#f2f1f3] rounded-lg pb-4 slide-up shadow-sm">
+    <div class="flex items-center gap-3 pt-6 px-6">
+      <div class="flex items-start gap-3">
+        <div
+          v-if="imageUrl"
+          class="bg-[#f5f0fd] rounded-lg w-12 h-12 flex justify-center items-center border border-[#dbccf9] overflow-hidden"
+        >
+          <img
+            :src="imageUrl"
+            :alt="project.name"
+            class="w-full h-full object-cover rounded-lg"
+            @error="handleImageError"
+          />
+        </div>
+        <div
+          v-else
+          class="bg-[#f5f0fd] rounded-lg w-12 h-12 flex justify-center items-center border border-[#dbccf9]"
+        >
+          <div class="bg-[#8e55ef] rounded w-6 h-6"></div>
+        </div>
+        <div class="flex flex-col">
+          <div href="#">
+            <h5 class="text-lg font-bold tracking-tight text-[#0a0a0b]">
+              <template
+                v-for="part in getHighlightedPartsForCurrentSearch(project.name)"
+                :key="part.text"
+              >
+                <span v-if="!part.isHighlighted">{{ part.text }}</span>
+                <span v-else class="bg-yellow-200">{{ part.text }}</span>
+              </template>
+            </h5>
+          </div>
+          <span class="mb-3 text-[#717171] font-bold"
+            >Cliente:
+            <span class="font-normal">
+              <template
+                v-for="part in getHighlightedPartsForCurrentSearch(project.client)"
+                :key="part.text"
+              >
+                <span v-if="!part.isHighlighted">{{ part.text }}</span>
+                <span v-else class="bg-yellow-200">{{ part.text }}</span>
+              </template>
+            </span></span
+          >
+        </div>
+      </div>
+      <div class="flex items-center gap-2 self-start">
         <button @click="toggleFavorite">
           <svg
             width="22"
@@ -27,7 +58,7 @@
               class="shadow"
               d="M1.16398 9.1776C0.845199 8.88374 1.01836 8.35251 1.44953 8.30155L7.55901 7.5792C7.73474 7.55843 7.88738 7.44843 7.96149 7.28825L10.5384 1.71938C10.7203 1.32636 11.2808 1.32628 11.4626 1.7193L14.0395 7.28813C14.1136 7.44831 14.2653 7.55861 14.441 7.57938L20.5508 8.30155C20.982 8.35251 21.1547 8.8839 20.8359 9.17776L16.3195 13.3419C16.1896 13.4616 16.1317 13.6399 16.1662 13.8129L17.3649 19.828C17.4495 20.2525 16.9962 20.5815 16.6174 20.3701L11.249 17.3738C11.0946 17.2877 10.907 17.2881 10.7526 17.3742L5.3836 20.3693C5.00472 20.5807 4.55066 20.2525 4.63528 19.828L5.83411 13.8133C5.8686 13.6403 5.8109 13.4616 5.68098 13.3418L1.16398 9.1776Z"
               :fill="project.isFavorite ? '#FFB23D' : 'none'"
-              stroke="white"
+              :stroke="project.isFavorite ? 'none' : '#71717a'"
               :stroke-width="project.isFavorite ? '1' : '2'"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -40,7 +71,7 @@
           class="bg-white w-8 h-8 rounded-full flex justify-center"
           ref="dropdownRef"
         >
-          <span class="text-[#695CCD] font-bold">...</span>
+          <span class="text-[#0a0a0b] font-bold">...</span>
 
           <div
             v-if="showOptions"
@@ -62,34 +93,16 @@
         </button>
       </div>
     </div>
-    <div class="p-5">
-      <a href="#">
-        <h5 class="mb-2 text-xl font-bold tracking-tight text-[#1F1283]">
-          <template v-for="part in getHighlightedPartsForCurrentSearch(project.name)" :key="part.text">
-            <span v-if="!part.isHighlighted">{{ part.text }}</span>
-            <span v-else class="bg-yellow-200">{{ part.text }}</span>
-          </template>
-        </h5>
-      </a>
-      <span class="mb-3 text-[#717171] font-bold"
-        >Cliente: <span class="font-normal">
-          <template v-for="part in getHighlightedPartsForCurrentSearch(project.client)" :key="part.text">
-            <span v-if="!part.isHighlighted">{{ part.text }}</span>
-            <span v-else class="bg-yellow-200">{{ part.text }}</span>
-          </template>
-        </span></span
-      >
-    </div>
-    <div class="border-t border-[##ECECEC] mx-3 pt-2">
+    <div class="border-t border-[#f2f1f3] pt-2">
       <div class="p-2 flex items-center gap-4">
-        <IconStartDate />
-        <span class="text-[#717171] font-normal top-px relative">{{
+        <IconStartDate class="" />
+        <span class="text-[#717171] text-sm font-normal top-px relative">{{
           formatDate(project.startDate)
         }}</span>
       </div>
       <div class="p-2 flex items-center gap-4">
         <IconEndDate />
-        <span class="text-[#717171] font-normal top-px relative">{{
+        <span class="text-[#717171] text-sm font-normal top-px relative">{{
           formatDate(project.endDate)
         }}</span>
       </div>
@@ -124,3 +137,16 @@ const { getHighlightedPartsForCurrentSearch } = useHighlight()
 
 const handleDelete = () => handleDeleteFromComposable(emit)
 </script>
+
+<style>
+.slide-up {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 0.3s ease-out;
+}
+
+.slide-up:hover {
+  transform: translateY(-4px); /* Move o card para cima */
+  opacity: 1;
+}
+</style>

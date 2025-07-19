@@ -10,7 +10,7 @@ export function useProjectCard(initialProject: Project) {
   const dropdownRef = ref<HTMLElement | null>(null)
 
   const imageUrl = computed(() => {
-    if (!project.value.coverImage) return defaultBackground
+    if (!project.value.coverImage) return null
     return `http://localhost:3001${project.value.coverImage}`
   })
 
