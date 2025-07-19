@@ -7,20 +7,10 @@
       :aria-expanded="isOpen"
     >
       Ordenar: {{ getSortLabel(modelValue) }}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-chevron-down h-4 w-4"
-      >
-        <path d="m6 9 6 6 6-6"></path>
-      </svg>
+      <IconChevronDown
+        class="transition-transform duration-200"
+        :class="{ 'rotate-180': isOpen }"
+      />
     </button>
 
     <div
@@ -45,6 +35,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import type { ProjectSortOption } from '@/types/project'
+import IconChevronDown from '@/components/icons/IconChevronDown.vue'
 
 defineProps<{
   modelValue: ProjectSortOption
