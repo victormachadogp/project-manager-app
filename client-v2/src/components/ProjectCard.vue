@@ -15,7 +15,7 @@
         </div>
         <div
           v-else
-          class="bg-[#f5f0fd] rounded-lg w-12 h-12 flex justify-center items-center border border-[#dbccf9]"
+          class="bg-[#f5f0fd] rounded-lg w-12 h-12 inline-flex justify-center items-center border border-[#dbccf9]"
         >
           <div class="bg-[#8e55ef] rounded w-6 h-6"></div>
         </div>
