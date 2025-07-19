@@ -17,15 +17,17 @@
         </RouterLink>
       </div>
 
-      <div class="w-full" v-else>
+      <div class="w-full container mx-auto" v-else>
         <ProjectsHeader :project-count="filteredProjects.length" />
 
-        <div class="flex justify-between items-center flex-col sm:flex-row p-4 bg-white">
-          <div class="flex gap-4 sm:flex-row flex-col">
+        <div
+          class="flex justify-between items-center flex-col sm:flex-row p-4 bg-white border border-[#efeef2] rounded-lg"
+        >
+          <div class="flex gap-4 sm:flex-row flex-col w-full">
             <ProjectFilters v-model:showFavorites="showOnlyFavorites" v-model:sortOption="sortBy" />
             <RouterLink
               to="/project"
-              class="bg-[#695CCD] text-white p-5 py-3 rounded-full self-center flex items-center gap-3 whitespace-nowrap"
+              class="bg-gradient-to-r from-[#7d3ced] to-[#9b69f2] text-white px-4 py-2 rounded-md self-center flex items-center gap-3 whitespace-nowrap text-sm"
             >
               <IconAdd />
               Novo Projeto
@@ -33,7 +35,7 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4 3xl:grid-cols-5 mt-5">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-5">
           <ProjectCard
             v-for="project in filteredProjects"
             :key="project.id"

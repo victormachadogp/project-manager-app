@@ -4,7 +4,7 @@
   >
     <div class="projects-header flex flex-col pb-4 gap-2 w-full p-8 md:p-12">
       <div class="max-w-2xl">
-        <div class="flex items-end gap-2">
+        <div class="flex items-end gap-2 mb-4">
           <div class="flex items-center justify-center bg-[#9661f0] rounded-xl w-14 h-14 p-2">
             <IconFolder class="h-7 w-7 text-primary-foreground text-white" />
           </div>

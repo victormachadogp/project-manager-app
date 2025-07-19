@@ -1,20 +1,15 @@
 <template>
-  <div class="relative">
-    <div
-      class="px-3 border border-[#695CCD] bg-white flex items-center gap-3 py-1 rounded h-[80px]"
-    >
-      <IconSearch class="text-[#695CCD]" />
+  <div class="relative min-w-0 flex-1">
+    <div class="px-3 border border-[#e4e4e7] flex items-center gap-3 rounded-lg bg-[#f9f8f9]">
+      <IconSearch class="text-[#71717a] w-4" />
       <input
         v-model="searchInput"
-        class="w-full py-2 !outline-none"
-        placeholder="Digite o nome do projeto..."
+        class="w-full py-3 !outline-none h-10 text-sm"
+        placeholder="Buscar projetos..."
         type="text"
         @focus="showRecentSearches = true"
         @blur="handleBlur"
       />
-      <button @click="$emit('close')">
-        <IconX class="size-6" />
-      </button>
     </div>
 
     <div

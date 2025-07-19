@@ -4,7 +4,7 @@
     @change="
       $emit('update:modelValue', ($event.target as HTMLSelectElement).value as ProjectSortOption)
     "
-    class="border border-[#DCDCDC] rounded-lg px-4 py-2 text-sm text-[#717171] bg-white"
+    class="border border-[#e4e4e7] rounded-lg px-4 py-2 text-sm text-[#717171] bg-[#f6f6f8] font-medium"
   >
     <option value="alphabetical">Ordem alfabética</option>
     <option value="startDate">Iniciados mais recentes</option>
