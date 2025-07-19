@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main class="my-15 flex justify-center h-screen max-w-[1860px] rounded mx-10.5 custom-height">
+    <main class="py-8 px-4 flex justify-center h-screen max-w-[1860px] rounded custom-height">
       <div
         v-if="projects.length === 0"
         class="flex items-center justify-center flex-col space-y-3 rounded"
@@ -17,15 +17,10 @@
         </RouterLink>
       </div>
 
-      <div class="mx-0 sm:mx-10 w-full" v-else>
-        <div class="flex justify-between items-center flex-col sm:flex-row">
-          <div class="flex items-center pb-4 sm:pb-0 gap-2">
-            <h3 class="text-[#1F1283] text-2xl">Projetos</h3>
-            <span class="text-[#695CCD]al text-sm relative top-px"
-              >({{ filteredProjects.length }})</span
-            >
-          </div>
+      <div class="w-full" v-else>
+        <ProjectsHeader :project-count="filteredProjects.length" />
 
+        <div class="flex justify-between items-center flex-col sm:flex-row p-4 bg-white">
           <div class="flex gap-4 sm:flex-row flex-col">
             <ProjectFilters v-model:showFavorites="showOnlyFavorites" v-model:sortOption="sortBy" />
             <RouterLink
@@ -65,6 +60,7 @@ import DeleteProjectModal from '@/components/DeleteProjectModal.vue'
 import ProjectFilters from '@/components/filters/ProjectFilters.vue'
 import { useProjects } from '@/composables/useProjects'
 import IconAdd from '@/components/icons/IconAdd.vue'
+import ProjectsHeader from '@/components/ProjectsHeader.vue'
 
 const {
   projects,
