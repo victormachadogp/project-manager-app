@@ -3,7 +3,7 @@
     <div v-if="!imagePreview">
       <span class="text-[#09090B] font-semibold">Imagem do Projeto</span>
       <div
-        class="flex flex-col items-center space-y-3 border-2 border-dashed border-[#e4e4e7] p-5 mt-2 cursor-pointer"
+        class="flex flex-col items-center space-y-3 border-2 border-dashed border-[#e4e4e7] p-5 mt-2"
       >
         <div class="bg-[#f4f4f5] py-5 px-5 rounded-full flex items-center justify-center">
           <IconImage stroke="#71717a" />
