@@ -7,15 +7,19 @@
         v-if="projects.length === 0"
         class="flex items-center justify-center flex-col space-y-3 rounded"
       >
-        <h3 class="text-[#1F1283] font-semibold text-4xl">Gerenciador de Projetos</h3>
+        <h3
+          class="bg-clip-text text-transparent font-semibold text-4xl bg-gradient-to-r from-[#7d3ced] to-[#9b69f2]"
+        >
+          Gerenciador de Projetos
+        </h3>
         <span class="text-[#717171] text-muted-foreground text-lg max-w-md mx-auto"
           >Organize e gerencie seus projetos de forma eficiente</span
         >
         <RouterLink
           to="/project"
-          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium border bg-background hover:text-accent-foreground h-11 rounded-md px-8 border-[#e4e4e7] bg-[#7c3bed] text-white font-bold"
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium border bg-background hover:text-accent-foreground h-11 rounded-md px-8 border-[#e4e4e7] bg-gradient-to-r from-[#7d3ced] to-[#9b69f2] text-white font-bold"
         >
-          Novo Projeto
+          Criar Projeto
         </RouterLink>
       </div>
 
@@ -84,8 +88,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-.custom-height {
-  height: calc(100vh - 180px);
-}
-</style>
+<style scoped></style>

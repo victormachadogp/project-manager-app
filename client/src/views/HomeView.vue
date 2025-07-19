@@ -18,8 +18,8 @@
           to="/project"
           class="bg-[#695CCD] text-white px-11 py-3.5 rounded-full text-xl flex items-center gap-3"
         >
-          <IconAdd />
-          Novo Projeto
+          <IconAdd class="relative top-px" />
+          <span class="relative bottom-px">Novo Projeto</span>
         </RouterLink>
       </div>
 
@@ -44,7 +44,9 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4 3xl:grid-cols-5 mt-5">
+        <div
+          class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4 3xl:grid-cols-5 mt-5 pb-12"
+        >
           <ProjectCard
             v-for="project in filteredProjects"
             :key="project.id"
