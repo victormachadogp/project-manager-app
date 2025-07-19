@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[1860px] mx-auto">
+  <div class="max-w-[1860px] h-screen mx-auto">
     <ProjectFormHeader :is-editing="isEditing" />
 
     <form
@@ -139,16 +139,17 @@
         />
 
         <button
-          class="text-white py-2 rounded-full mt-10 transition-colors duration-200"
+          class="flex justify-center items-center gap-2 text-white h-12 rounded-md mt-10 transition-colors duration-200 text-sm font-semibold shadow-lg"
           :class="
             hasAttemptedSubmit && !isFormValid
-              ? 'bg-[#B2A8FF] cursor-not-allowed'
-              : 'bg-[#695CCD] hover:bg-[#5648B0] cursor-pointer'
+              ? 'bg-[#7d3ced]/30 cursor-not-allowed'
+              : 'bg-gradient-to-r from-[#7d3ced] to-[#9b69f2] cursor-pointer'
           "
           :disabled="hasAttemptedSubmit && !isFormValid"
           type="submit"
         >
-          {{ loading ? 'Salvando...' : 'Salvar projeto' }}
+          <IconSave />
+          {{ loading ? 'Salvando...' : 'Salvar Projeto' }}
         </button>
       </div>
     </form>
@@ -164,6 +165,7 @@ import IconStartDate from '../components/icons/IconStartDate.vue'
 import IconEndDate from '../components/icons/IconEndDate.vue'
 import { useProjectForm } from '../composables/useProjectForm'
 import { useProjectImage } from '../composables/useProjectImage'
+import IconSave from '@/components/icons/IconSave.vue'
 
 const route = useRoute()
 const {
