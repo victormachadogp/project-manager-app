@@ -54,7 +54,7 @@
         />
 
         <button
-          class="text-white py-2 rounded-full mt-10 transition-colors duration-200"
+          class="text-white py-2 rounded-full mt-10 transition-colors duration-200 h-13 text-xl"
           :class="
             hasAttemptedSubmit && !isFormValid
               ? 'bg-[#B2A8FF] cursor-not-allowed'
@@ -82,8 +82,16 @@ import { useProjectForm } from '../composables/useProjectForm'
 import { useProjectImage } from '../composables/useProjectImage'
 
 const route = useRoute()
-const { form, isEditing, loading, errors, hasAttemptedSubmit, isFormValid, handleSubmit, loadProject } =
-  useProjectForm()
+const {
+  form,
+  isEditing,
+  loading,
+  errors,
+  hasAttemptedSubmit,
+  isFormValid,
+  handleSubmit,
+  loadProject,
+} = useProjectForm()
 const { imagePreview, handleImageUpload, removeImage } = useProjectImage(form)
 
 onMounted(async () => {

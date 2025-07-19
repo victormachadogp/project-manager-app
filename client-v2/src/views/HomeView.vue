@@ -1,6 +1,8 @@
 <template>
   <div>
-    <main class="py-8 px-4 flex justify-center h-screen max-w-[1860px] rounded custom-height">
+    <main
+      class="py-8 px-4 flex justify-center h-screen max-w-[1860px] mx-auto rounded custom-height"
+    >
       <div
         v-if="projects.length === 0"
         class="flex items-center justify-center flex-col space-y-3 rounded"
