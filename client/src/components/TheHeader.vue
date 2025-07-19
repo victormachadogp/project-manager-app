@@ -7,23 +7,34 @@
           <img class="my-4 sm:my-2 w-20 sm:w-18" src="../assets/logo-symbol.svg" alt="" />
           <p class="text-lg w-2/5">Gerenciador de Projetos</p>
         </div>
-        <button @click="toggleSearchBar">
+        <button @click="handleToggleSearchBar">
           <IconSearch class="text-white" />
         </button>
       </div>
     </div>
 
-    <SearchBar v-show="showSearchBar" @close="toggleSearchBar" />
+    <SearchBar ref="searchBarRef" v-show="showSearchBar" @close="toggleSearchBar" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref, nextTick } from 'vue'
 import IconSearch from './icons/IconSearch.vue'
 import SearchBar from './SearchBar.vue'
 import { useSearch } from '@/composables/useSearch'
 
+const searchBarRef = ref()
 const { showSearchBar, toggleSearchBar, store } = useSearch()
+
+const handleToggleSearchBar = async () => {
+  const wasOpen = showSearchBar.value
+  toggleSearchBar()
+  
+  if (!wasOpen && showSearchBar.value) {
+    await nextTick()
+    searchBarRef.value?.focusInput()
+  }
+}
 
 onMounted(() => {
   store.loadRecentSearches()

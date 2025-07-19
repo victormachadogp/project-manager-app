@@ -23,16 +23,7 @@
         @mousedown="selectRecentSearch(search)"
       >
         <div class="flex items-center gap-2">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M8 4V8L10 10" stroke="#695CCD" stroke-width="2" stroke-linecap="round" />
-            <circle cx="8" cy="8" r="7" stroke="#695CCD" stroke-width="2" />
-          </svg>
+          <IconClock />
           <span class="text-[#717171]">{{ search }}</span>
         </div>
         <button
@@ -47,6 +38,7 @@
 </template>
 
 <script setup lang="ts">
+import IconClock from './icons/IconClock.vue'
 import IconSearch from './icons/IconSearch.vue'
 import IconX from './icons/IconX.vue'
 import { useSearch } from '@/composables/useSearch'
