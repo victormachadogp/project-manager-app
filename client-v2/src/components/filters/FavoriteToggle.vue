@@ -6,15 +6,13 @@
       modelValue ? 'bg-purple-600 text-white' : 'bg-[#f6f6f8] text-gray-700 hover:bg-gray-200',
     ]"
   >
-    <IconStar v-if="!modelValue" />
-    <IconStarFilled v-else class="text-white" />
+    <IconStar :filled="modelValue" :fill-color="modelValue ? 'white' : '#6b7280'" />
     Favoritos
   </button>
 </template>
 
 <script setup lang="ts">
 import IconStar from '@/components/icons/IconStar.vue'
-import IconStarFilled from '@/components/icons/IconStarFilled.vue'
 
 const props = defineProps<{
   modelValue: boolean

@@ -51,8 +51,7 @@
             <div
               class="inline-flex items-center justify-center gap-2 rounded-md h-8 w-8 p-0 transition-all duration-200 hover:scale-110 hover:bg-[#f4f4f5]"
             >
-              <IconStarFilled v-if="project.isFavorite" />
-              <IconStar v-else />
+              <IconStar :filled="project.isFavorite" />
             </div>
           </button>
 
@@ -112,7 +111,6 @@ import { useHighlight } from '../composables/useHighlight'
 import IconStartDate from '@/components/icons/IconStartDate.vue'
 import IconEndDate from '@/components/icons/IconEndDate.vue'
 import IconStar from '@/components/icons/IconStar.vue'
-import IconStarFilled from '@/components/icons/IconStarFilled.vue'
 
 const props = defineProps<{ project: Project }>()
 const emit = defineEmits<{
