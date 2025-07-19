@@ -4,7 +4,7 @@
 
     <form
       @submit.prevent="handleSubmit"
-      class="border border-[#efeef2] p-10 mx-auto rounded bg-[#fcfbfc] max-w-2xl"
+      class="border border-[#efeef2] p-10 mx-auto rounded bg-[#fbf9fc] max-w-2xl"
     >
       <div class="max-w-2xl mx-auto flex flex-col justify-center">
         <div class="mb-6">
@@ -24,7 +24,8 @@
             v-model="form.name"
             type="text"
             id="name"
-            class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2"
+            placeholder="Digite o nome do projeto"
+            class="bg-[#f6f6f8] text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-3"
             :class="
               errors.name
                 ? 'border border-[#C40000]'
@@ -51,7 +52,8 @@
             v-model="form.client"
             type="text"
             id="client"
-            class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2"
+            placeholder="Digite o nome do cliente"
+            class="bg-[#f6f6f8] text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-3"
             :class="
               errors.client
                 ? 'border border-[#C40000]'
@@ -80,7 +82,7 @@
                 v-model="form.startDate"
                 type="date"
                 id="startDate"
-                class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2 pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                class="bg-[#f6f6f8] text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-3 pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                 :class="
                   errors.startDate
                     ? 'border border-[#C40000]'
@@ -113,7 +115,7 @@
                 v-model="form.endDate"
                 type="date"
                 id="endDate"
-                class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2 pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                class="bg-[#f6f6f8] text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-3 pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                 :class="
                   errors.endDate
                     ? 'border border-[#C40000]'
