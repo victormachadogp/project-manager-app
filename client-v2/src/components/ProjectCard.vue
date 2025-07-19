@@ -60,14 +60,14 @@
           >
             <button
               @click="showOptions = !showOptions"
-              class="w-8 h-8 rounded-full flex justify-center"
+              class="w-8 h-8 rounded-full flex justify-center relative"
               ref="dropdownRef"
             >
               <span class="text-[#0a0a0b] font-bold">...</span>
 
               <div
                 v-if="showOptions"
-                class="absolute right-[28px] top-0 mt-14 mb-2 bg-white border border-[#e4e4e7] rounded-lg shadow-lg p-1 min-w-[120px]"
+                class="absolute right-0 top-0 mt-8 z-10 mb-2 bg-white border border-[#e4e4e7] rounded-lg shadow-lg p-1 min-w-[120px]"
               >
                 <RouterLink
                   :to="`/project/${project.id}`"
