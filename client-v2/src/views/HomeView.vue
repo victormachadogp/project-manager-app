@@ -17,11 +17,11 @@
         </RouterLink>
       </div>
 
-      <div class="w-full container mx-auto" v-else>
+      <div class="w-full container mx-auto px-4 2xl:px-20" v-else>
         <ProjectsHeader :project-count="filteredProjects.length" />
 
         <div
-          class="flex justify-between items-center flex-col sm:flex-row p-4 bg-white border border-[#efeef2] rounded-lg"
+          class="flex justify-between items-center flex-col sm:flex-row p-4 bg-white border border-[#efeef2] rounded-lg mb-8"
         >
           <div class="flex gap-4 sm:flex-row flex-col w-full">
             <ProjectFilters v-model:showFavorites="showOnlyFavorites" v-model:sortOption="sortBy" />
@@ -35,7 +35,7 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-5">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <ProjectCard
             v-for="project in filteredProjects"
             :key="project.id"
