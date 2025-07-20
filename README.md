@@ -174,6 +174,32 @@ graph TD
     L --> A
 ```
 
+1. **Home Page:**
+
+   - Caso não existam projetos, uma mensagem de incentivo é exibida.
+
+2. **Listagem Inicial:**
+
+   - Lista com todos os projetos criados.
+
+3. **Criação ou Edição:**
+
+   - O formulário valida automaticamente os campos obrigatórios.
+
+4. **Upload de Imagens:**
+
+   - Limite de 5MB e suporte para JPG/PNG.
+   - Feedback ao usuário em caso de erros.
+
+5. **Busca:**
+
+   - Implementada com debounce para otimizar o desempenho.
+   - Histórico salvo no `localStorage`.
+
+6. **Favoritar e Ordenar:**
+
+   - Filtros e ordenação atualizam a listagem em tempo real.
+
 ## Configuração do Ambiente
 
 ### Pré-requisitos
