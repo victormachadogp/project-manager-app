@@ -2,6 +2,35 @@
 
 Um aplicativo completo de gerenciamento de projetos desenvolvido com Vue.js 3, TypeScript e Node.js, oferecendo duas versões de interface para diferentes experiências de usuário.
 
+> [!IMPORTANT]
+>
+> Para garantir que o projeto funcione de forma adequada e sem problemas, é necessário seguir os seguintes passos:
+>
+> 1. Instalar as dependências do front.
+>
+> - `cd client`
+> - `npm install`
+> - `npm run dev`
+>
+> 2. Instalar as dependências do front alternativo. (opcional)
+>
+> - `cd client-v2`
+> - `npm install`
+> - `npm run dev`
+>
+> 3. Iniciar o servidor da API.
+>
+> - `cd server`
+> - `npm install`
+> - `npm run json-server`
+>
+> 4. Iniciar o servidor de imagens.
+>
+> - `cd server`
+> - `node imageServer.js`
+>
+> Após isso lembre-se de configurar as [variáveis de ambiente](#configuração-das-variáveis-de-ambiente).
+
 ## Índice
 
 - [Visão Geral](#visão-geral)
@@ -326,16 +355,22 @@ npm run test:unit
 
 ### Por Que Duas Versões?
 
-O projeto oferece duas implementações de frontend com justificativas sólidas:
+O projeto oferece duas implementações de frontend com justificativas sólidas, **ambas compartilhando o mesmo backend** (JSON Server + Express para imagens):
 
 #### **Client (Versão Principal)**
+
+Implementação fiel ao design fornecido no teste, respeitando a proposta visual original compartilhada no Figma.
 
 - **Arquitetura Modular**: Componentes altamente granulares
 - **Manutenibilidade**: Separação clara de responsabilidades
 - **Escalabilidade**: Facilita adição de novas funcionalidades
 - **Exemplo**: `ProjectCard` dividido em `ProjectImage`, `ProjectInfo` e `ProjectDate`
 
+Obs: Nesta versão, tive o cuidado de seguir rigorosamente o design do Figma, replicando tamanhos, cores e espaçamentos conforme especificado, garantindo fidelidade visual.
+
 #### **Client-v2 (Versão Alternativa)**
+
+Versão alternativa desenvolvida por mim, onde explorei melhorias visuais e de usabilidade, com foco em uma experiência de usuário mais moderna e refinada.
 
 - **Performance**: Menos overhead de componentes
 - **Simplicidade**: Abordagem mais direta
@@ -347,13 +382,7 @@ O projeto oferece duas implementações de frontend com justificativas sólidas:
 1. **A/B Testing**: Permite comparar diferentes abordagens UX
 2. **Flexibilidade de Design**: Equipes podem escolher a versão mais adequada
 3. **Aprendizado**: Demonstra diferentes padrões arquiteturais
-4. **Backup**: Redundância em caso de problemas críticos
-5. **Especialização**: Cada versão pode atender públicos específicos
-
-### **Casos de Uso:**
-
-- **Client**: Projetos corporativos que precisam de alta manutenibilidade
-- **Client-v2**: Protótipos e projetos que priorizam velocidade de desenvolvimento
+4. **Especialização**: Cada versão pode atender públicos específicos
 
 ## Melhorias Futuras
 
