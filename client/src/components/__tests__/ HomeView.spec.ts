@@ -6,13 +6,14 @@ import { createTestingPinia } from '@pinia/testing'
 import { useProjectStore } from '@/stores/projectStore'
 import type { Project, ProjectSortOption } from '@/types/project'
 import { nextTick } from 'vue'
+import { projectApi } from '@/services/projectApi'
 
 // Definindo a interface para o store
 interface ProjectStore {
   projects: Project[]
   searchQuery: string
   fetchProjects: () => Promise<void>
-  deleteProject: (id: number) => Promise<void>
+  deleteProject: (id: string) => Promise<void>
 }
 
 // Definindo a interface para o componente
@@ -42,10 +43,21 @@ vi.mock('@/components/ProjectCard.vue', () => ({
   },
 }))
 
+// Mock da API
+vi.mock('@/services/projectApi', () => ({
+  projectApi: {
+    getAll: vi.fn(),
+    create: vi.fn(),
+    getById: vi.fn(),
+    update: vi.fn(),
+    delete: vi.fn(),
+  },
+}))
+
 // Mock de dados
 const mockProjects: Project[] = [
   {
-    id: 1,
+    id: 'test1',
     name: 'Projeto A',
     client: 'Cliente 1',
     startDate: '2024-01-01',
@@ -55,7 +67,7 @@ const mockProjects: Project[] = [
     createdAt: '2024-01-01',
   },
   {
-    id: 2,
+    id: 'test2',
     name: 'Projeto B',
     client: 'Cliente 2',
     startDate: '2024-02-01',
@@ -81,6 +93,14 @@ describe('HomeView', () => {
   let store: ProjectStore
 
   beforeEach(() => {
+    // Reset mocks
+    vi.clearAllMocks()
+
+    // Configure API mocks
+    vi.mocked(projectApi.getAll).mockResolvedValue(mockProjects)
+    vi.mocked(projectApi.update).mockImplementation((project) => Promise.resolve(project))
+    vi.mocked(projectApi.delete).mockResolvedValue(undefined)
+
     wrapper = mount(HomeView, {
       global: {
         plugins: [

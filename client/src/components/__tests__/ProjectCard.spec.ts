@@ -1,11 +1,11 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
 import { RouterLink } from 'vue-router'
 import ProjectCard from '../ProjectCard.vue'
 
 const mockProject = {
-  id: '1',
+  id: 'teste1',
   name: 'Test Project',
   client: 'Test Client',
   coverImage: 'test-image.jpg',
@@ -14,6 +14,12 @@ const mockProject = {
   isFavorite: false,
   createdAt: '2023-01-01',
 }
+
+vi.mock('../../stores/projectStore', () => ({
+  useProjectStore: vi.fn(() => ({
+    updateProject: vi.fn().mockResolvedValue({})
+  }))
+}))
 
 describe('ProjectCard', () => {
   beforeEach(() => {
