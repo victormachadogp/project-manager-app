@@ -4,126 +4,46 @@
 
     <form @submit.prevent="handleSubmit" class="border border-[#DCDCDC] p-10 mx-5 rounded">
       <div class="max-w-2xl mx-auto flex flex-col justify-center">
-        <div class="mb-6">
-          <label
-            for="name"
-            class="block mb-2 text-sm font-medium"
-            :class="errors.name ? 'text-[#9F0000]' : 'text-[#695CCD]'"
-          >
-            Nome do projeto
-            <span
-              class="text-xs text-[#717171] font-light"
-              :class="errors.name ? 'text-[#C40000]' : 'text-[#717171]'"
-              >(Obrigatório)</span
-            >
-          </label>
-          <input
-            v-model="form.name"
-            type="text"
-            id="name"
-            class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2"
-            :class="
-              errors.name
-                ? 'border border-[#C40000]'
-                : 'border border-gray-300 focus:border-blue-500'
-            "
-          />
-          <span v-if="errors.name" class="text-sm text-[#C40000] mt-1">{{ errors.name }}</span>
-        </div>
+        <BaseInput
+          id="name"
+          label="Nome do projeto"
+          v-model="form.name"
+          :required="true"
+          :error="errors.name"
+        />
 
-        <div class="mb-6">
-          <label
-            for="client"
-            class="block mb-2 text-sm font-medium"
-            :class="errors.client ? 'text-[#9F0000]' : 'text-[#695CCD]'"
-          >
-            Cliente
-            <span
-              class="text-xs text-[#717171] font-light"
-              :class="errors.client ? 'text-[#C40000]' : 'text-[#717171]'"
-              >(Obrigatório)</span
-            >
-          </label>
-          <input
-            v-model="form.client"
-            type="text"
-            id="client"
-            class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2"
-            :class="
-              errors.client
-                ? 'border border-[#C40000]'
-                : 'border border-gray-300 focus:border-blue-500'
-            "
-          />
-          <span v-if="errors.client" class="text-sm text-[#C40000] mt-1">{{ errors.client }}</span>
-        </div>
+        <BaseInput
+          id="client"
+          label="Cliente"
+          v-model="form.client"
+          :required="true"
+          :error="errors.client"
+        />
 
         <div class="grid gap-6 mb-6 md:grid-cols-2">
           <div>
-            <label
-              for="startDate"
-              class="block mb-2 text-sm font-medium"
-              :class="errors.startDate ? 'text-[#9F0000]' : 'text-[#695CCD]'"
-            >
-              Data de Início
-              <span
-                class="text-xs text-[#717171] font-light"
-                :class="errors.startDate ? 'text-[#C40000]' : 'text-[#717171]'"
-                >(Obrigatório)</span
-              >
-            </label>
-            <div class="relative">
-              <input
-                v-model="form.startDate"
-                type="date"
-                id="startDate"
-                class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2 pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
-                :class="
-                  errors.startDate
-                    ? 'border border-[#C40000]'
-                    : 'border border-gray-300 focus:border-blue-500'
-                "
-              />
-              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                <IconStartDate />
-              </div>
-            </div>
-            <span v-if="errors.startDate" class="text-sm text-[#C40000] mt-1">{{
-              errors.startDate
-            }}</span>
+            <BaseInput
+              id="startDate"
+              label="Data de Início"
+              type="date"
+              v-model="form.startDate"
+              :required="true"
+              :error="errors.startDate"
+              :icon="IconStartDate"
+              input-class="[&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+            />
           </div>
           <div>
-            <label
-              for="endDate"
-              class="block mb-2 text-sm font-medium"
-              :class="errors.endDate ? 'text-[#9F0000]' : 'text-[#695CCD]'"
-            >
-              Data Final
-              <span
-                class="text-xs text-[#717171] font-light"
-                :class="errors.endDate ? 'text-[#C40000]' : 'text-[#717171]'"
-                >(Obrigatório)</span
-              >
-            </label>
-            <div class="relative">
-              <input
-                v-model="form.endDate"
-                type="date"
-                id="endDate"
-                class="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2 pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
-                :class="
-                  errors.endDate
-                    ? 'border border-[#C40000]'
-                    : 'border border-gray-300 focus:border-blue-500'
-                "
-              />
-              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                <IconEndDate />
-              </div>
-            </div>
-            <span v-if="errors.endDate" class="text-sm text-[#C40000] mt-1">{{
-              errors.endDate
-            }}</span>
+            <BaseInput
+              id="endDate"
+              label="Data Final"
+              type="date"
+              v-model="form.endDate"
+              :required="true"
+              :error="errors.endDate"
+              :icon="IconEndDate"
+              input-class="[&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+            />
           </div>
         </div>
 
@@ -134,7 +54,7 @@
         />
 
         <button
-          class="text-white py-2 rounded-full mt-10 transition-colors duration-200"
+          class="text-white py-2 rounded-full mt-10 transition-colors duration-200 h-13 text-xl"
           :class="
             hasAttemptedSubmit && !isFormValid
               ? 'bg-[#B2A8FF] cursor-not-allowed'
@@ -155,14 +75,23 @@ import { onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import ProjectFormHeader from '../components/ProjectFormHeader.vue'
 import ProjectImageUpload from '../components/ProjectImageUpload.vue'
+import BaseInput from '../components/BaseInput.vue'
 import IconStartDate from '../components/icons/IconStartDate.vue'
 import IconEndDate from '../components/icons/IconEndDate.vue'
 import { useProjectForm } from '../composables/useProjectForm'
 import { useProjectImage } from '../composables/useProjectImage'
 
 const route = useRoute()
-const { form, isEditing, loading, errors, hasAttemptedSubmit, isFormValid, handleSubmit, loadProject } =
-  useProjectForm()
+const {
+  form,
+  isEditing,
+  loading,
+  errors,
+  hasAttemptedSubmit,
+  isFormValid,
+  handleSubmit,
+  loadProject,
+} = useProjectForm()
 const { imagePreview, handleImageUpload, removeImage } = useProjectImage(form)
 
 onMounted(async () => {
