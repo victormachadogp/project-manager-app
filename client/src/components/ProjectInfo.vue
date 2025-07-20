@@ -1,7 +1,7 @@
 <template>
   <div class="p-5">
     <a href="#">
-      <h5 class="mb-2 text-xl font-bold tracking-tight text-[#1F1283]">
+      <h5 class="mb-2 text-xl font-bold tracking-tight text-[#1F1283] line-clamp-1">
         <template
           v-for="part in getHighlightedPartsForCurrentSearch(project.name)"
           :key="part.text"
