@@ -65,7 +65,7 @@ O Project Manager App é uma aplicação web moderna para gerenciamento de proje
 
 ```
 project-manager-app/
-├── client/                 # Cliente principal (versão refinada)
+├── client/                 # Cliente principal
 │   ├── src/
 │   │   ├── components/     # Componentes Vue reutilizáveis
 │   │   │   ├── icons/      # Ícones SVG customizados
