@@ -63,6 +63,7 @@ project-manager-app/
 ### Componentes Principais
 
 #### Client (Versão Principal)
+
 - **ProjectCard**: Componente modularizado em `ProjectImage`, `ProjectInfo` e `ProjectDate`
 - **ProjectFormHeader**: Cabeçalho inteligente para formulários
 - **ModalBase**: Sistema de modais reutilizável
@@ -70,6 +71,7 @@ project-manager-app/
 - **ProjectFilters**: Sistema completo de filtros
 
 #### Client-v2 (Versão Alternativa)
+
 - **Design Unificado**: Componentes mais consolidados
 - **Interface Diferenciada**: Abordagem visual alternativa
 - **Mesma Funcionalidade**: Mantém todas as features principais
@@ -86,7 +88,8 @@ O sistema de validação implementado no `useProjectForm.ts` utiliza uma abordag
 
 2. **Feedback Imediato**: Após a primeira submissão, os campos são validados em tempo real através de watchers Vue
 
-3. **Validação Inteligente**: 
+3. **Validação Inteligente**:
+
    - Nome do projeto: Mínimo de 2 palavras
    - Cliente: Mínimo de 1 palavra
    - Datas: Validação de formato e lógica temporal
@@ -94,10 +97,34 @@ O sistema de validação implementado no `useProjectForm.ts` utiliza uma abordag
 4. **Validação Cruzada**: O sistema verifica se a data final é posterior à data inicial automaticamente
 
 **Benefícios:**
+
 - Reduz ansiedade do usuário (não mostra erros prematuramente)
 - Fornece feedback imediato após engajamento
 - Previne submissões inválidas
 - Melhora a taxa de conclusão de formulários
+
+### Gradiente no Overlay do ProjectCard
+
+- Melhorou a usabilidade e acessibilidade visual.
+- Imagens de fundo claras poderiam dificultar a visualização dos botões.
+
+### Uso de json-server e um servidor Node.js com Express no projeto
+
+O projeto utiliza dois servidores diferentes para propósitos específicos:
+
+- JSON Server (API Mock)
+- Express Server (Servidor de Imagens)
+
+O servidor Node.js com Express foi implementado para lidar com upload e manipulação de imagens, evitando o uso de base64 no banco de dados por motivos como:
+
+- **Tamanho do banco**: Base64 aumenta significativamente o tamanho dos dados.
+- **Performance**: Consultas e transferências mais lentas.
+- **Cache**: Difícil para navegadores armazenarem em cache.
+- **Requisições pesadas**: Dados em base64 aumentam o consumo de requisições.
+
+Essa separação reflete uma abordagem mais próxima de um cenário real, onde imagens seriam gerenciadas por serviços de armazenamento especializados, como Amazon S3, Supabase Storage ou Cloudinary. Em produção, esses serviços oferecem escalabilidade, desempenho e facilidade de integração, enquanto no projeto atual o servidor Node.js simula essa funcionalidade de forma local para fins de desenvolvimento e testes.
+
+O approach também reduziu dependências externas e custos adicionais para o ambiente atual.
 
 ## 🔄 Fluxo da Aplicação
 
@@ -108,7 +135,7 @@ graph TD
     B --> D[Criar Projeto]
     B --> E[Editar Projeto]
     B --> F[Excluir Projeto]
-    
+
     D --> G[Formulário de Projeto]
     E --> G
     G --> H[Upload de Imagem]
@@ -116,7 +143,7 @@ graph TD
     I --> J[Salvar no Store]
     J --> K[Persistir no Servidor]
     K --> A
-    
+
     C --> L[Resultados Filtrados]
     L --> A
 ```
@@ -124,42 +151,51 @@ graph TD
 ## ⚙️ Configuração do Ambiente
 
 ### Pré-requisitos
-- Node.js 18+ 
+
+- Node.js 18+
 - npm ou yarn
 
 ### Instalação e Execução
 
 #### 1. Frontend (Cliente Principal)
+
 ```bash
 cd client
 npm install
 npm run dev
 ```
+
 **Porta:** http://localhost:5173
 
 #### 2. Frontend Alternativo (Client-v2)
+
 ```bash
 cd client-v2
 npm install
 npm run dev
 ```
+
 **Porta:** http://localhost:5174
 
 #### 3. Backend (Servidor JSON + Imagens)
 
 **Terminal 1 - JSON Server:**
+
 ```bash
 cd server
 npm install
 npm run json-server
 ```
+
 **Porta:** http://localhost:3000
 
 **Terminal 2 - Servidor de Imagens:**
+
 ```bash
 cd server
 node imageServer.js
 ```
+
 **Porta:** http://localhost:3001
 
 ### Variáveis de Ambiente
@@ -173,16 +209,17 @@ IMAGE_SERVER_PORT=3001
 
 ### Portas Utilizadas
 
-| Serviço | Porta | URL |
-|---------|-------|-----|
-| Client (Principal) | 5173 | http://localhost:5173 |
-| Client-v2 | 5174 | http://localhost:5174 |
-| JSON Server | 3000 | http://localhost:3000 |
-| Servidor de Imagens | 3001 | http://localhost:3001 |
+| Serviço             | Porta | URL                   |
+| ------------------- | ----- | --------------------- |
+| Client (Principal)  | 5173  | http://localhost:5173 |
+| Client-v2           | 5174  | http://localhost:5174 |
+| JSON Server         | 3000  | http://localhost:3000 |
+| Servidor de Imagens | 3001  | http://localhost:3001 |
 
 ## 🛠️ Tecnologias Utilizadas
 
 ### Frontend
+
 - **Vue.js 3**: Framework progressivo com Composition API
 - **TypeScript**: Tipagem estática para JavaScript
 - **Pinia**: Gerenciamento de estado moderno para Vue
@@ -192,6 +229,7 @@ IMAGE_SERVER_PORT=3001
 - **Vite**: Build tool e dev server ultra-rápido
 
 ### Backend
+
 - **Node.js**: Runtime JavaScript
 - **Express.js**: Framework web minimalista
 - **JSON Server**: Mock de API REST
@@ -199,6 +237,7 @@ IMAGE_SERVER_PORT=3001
 - **CORS**: Middleware para Cross-Origin Resource Sharing
 
 ### Ferramentas de Desenvolvimento
+
 - **Vitest**: Framework de testes unitários
 - **Vue Test Utils**: Utilitários para testes Vue
 - **ESLint**: Linter para JavaScript/TypeScript
@@ -209,18 +248,21 @@ IMAGE_SERVER_PORT=3001
 O projeto possui cobertura abrangente de testes unitários:
 
 ### Executar Testes
+
 ```bash
 cd client  # ou client-v2
 npm run test:unit
 ```
 
 ### Cobertura de Testes
+
 - **Componentes**: Todos os componentes principais testados
 - **Composables**: Lógica de negócio testada isoladamente
 - **Store**: Estado e mutations testados
 - **Utilitários**: Funções auxiliares cobertas
 
 ### Arquivos de Teste
+
 - `components/__tests__/`: Testes de componentes Vue
 - Testes de integração para fluxos completos
 - Mocks para APIs externas
@@ -232,12 +274,14 @@ npm run test:unit
 O projeto oferece duas implementações de frontend com justificativas sólidas:
 
 #### **Client (Versão Principal)**
+
 - **Arquitetura Modular**: Componentes altamente granulares
 - **Manutenibilidade**: Separação clara de responsabilidades
 - **Escalabilidade**: Facilita adição de novas funcionalidades
 - **Exemplo**: `ProjectCard` dividido em `ProjectImage`, `ProjectInfo` e `ProjectDate`
 
 #### **Client-v2 (Versão Alternativa)**
+
 - **Performance**: Menos overhead de componentes
 - **Simplicidade**: Abordagem mais direta
 - **Design Diferenciado**: Exploração de alternativas visuais
@@ -252,12 +296,14 @@ O projeto oferece duas implementações de frontend com justificativas sólidas:
 5. **Especialização**: Cada versão pode atender públicos específicos
 
 ### **Casos de Uso:**
+
 - **Client**: Projetos corporativos que precisam de alta manutenibilidade
 - **Client-v2**: Protótipos e projetos que priorizam velocidade de desenvolvimento
 
 ## 🚀 Melhorias Futuras
 
 ### Funcionalidades
+
 - [ ] Autenticação e autorização de usuários
 - [ ] Colaboração em tempo real
 - [ ] Notificações push
@@ -268,6 +314,7 @@ O projeto oferece duas implementações de frontend com justificativas sólidas:
 - [ ] Versionamento de projetos
 
 ### Técnicas
+
 - [ ] PWA (Progressive Web App)
 - [ ] Internacionalização (i18n)
 - [ ] Lazy loading de componentes
@@ -278,6 +325,7 @@ O projeto oferece duas implementações de frontend com justificativas sólidas:
 - [ ] Monitoramento e analytics
 
 ### Performance
+
 - [ ] Virtual scrolling para listas grandes
 - [ ] Otimização de bundle size
 - [ ] Service Workers
@@ -286,18 +334,21 @@ O projeto oferece duas implementações de frontend com justificativas sólidas:
 ## 📝 Observações
 
 ### Desenvolvimento
+
 - O projeto utiliza convenções modernas de Vue 3 com Composition API
 - TypeScript garante type safety em todo o codebase
 - Tailwind CSS oferece desenvolvimento rápido e consistente
 - Estrutura modular facilita manutenção e extensibilidade
 
 ### Produção
+
 - Para deploy em produção, executar `npm run build` em cada cliente
 - Configurar variáveis de ambiente adequadas
 - Considerar uso de proxy reverso (nginx) para servir múltiplos clientes
 - Implementar backup regular do db.json
 
 ### Segurança
+
 - O servidor de imagens possui validação de tipo de arquivo
 - Limite de 5MB por upload de imagem
 - CORS configurado para desenvolvimento (ajustar para produção)
