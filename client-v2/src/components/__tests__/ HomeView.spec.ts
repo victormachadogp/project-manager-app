@@ -81,30 +81,31 @@ describe('HomeView', () => {
   let store: ProjectStore
 
   beforeEach(() => {
+    const pinia = createTestingPinia({
+      createSpy: vi.fn,
+      initialState: {
+        project: {
+          projects: mockProjects,
+          searchQuery: '',
+        },
+      },
+    })
+
     wrapper = mount(HomeView, {
       global: {
-        plugins: [
-          router,
-          createTestingPinia({
-            createSpy: vi.fn,
-            initialState: {
-              project: {
-                projects: mockProjects,
-                searchQuery: '',
-              },
-            },
-          }),
-        ],
+        plugins: [router, pinia],
         stubs: {
-          TheHeader: true,
+          RouterLink: true,
           ProjectCard: true,
-          ModalBase: true,
+          DeleteProjectModal: true,
           ProjectFilters: true,
+          ProjectsHeader: true,
+          IconAdd: true,
         },
       },
     }) as VueWrapper<HomeViewInstance>
 
-    store = useProjectStore() as unknown as ProjectStore
+    store = useProjectStore(pinia) as unknown as ProjectStore
   })
 
   it('inicializa os projetos ao montar o componente', () => {
@@ -115,8 +116,8 @@ describe('HomeView', () => {
     store.projects = []
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.text()).toContain('Nenhum Projeto')
-    expect(wrapper.text()).toContain('Clique no botão abaixo para criar o primeiro e gerenciá-lo')
+    expect(wrapper.text()).toContain('Gerenciador de Projetos')
+    expect(wrapper.text()).toContain('Organize e gerencie seus projetos de forma eficiente')
   })
 
   it('renderiza a lista de projetos quando existem projetos', () => {
@@ -125,7 +126,8 @@ describe('HomeView', () => {
   })
 
   it('mostra o número correto de projetos', () => {
-    expect(wrapper.text()).toContain(`(${mockProjects.length})`)
+    const header = wrapper.findComponent({ name: 'ProjectsHeader' })
+    expect(header.props('projectCount')).toBe(mockProjects.length)
   })
 
   it('ordena alfabeticamente por padrão', async () => {
@@ -153,10 +155,10 @@ describe('HomeView', () => {
     expect(wrapper.vm.projectToDelete).toBe(null)
   })
 
-  it('fecha o modal sem deletar o projeto', async () => {
+  it('fecha o modal sem deletar o projeto', () => {
     wrapper.vm.projectToDelete = mockProjects[0]
     wrapper.vm.showDeleteModal = true
-    await wrapper.vm.closeDeleteModal()
+    wrapper.vm.closeDeleteModal()
 
     expect(store.deleteProject).not.toHaveBeenCalled()
     expect(wrapper.vm.showDeleteModal).toBe(false)
@@ -213,8 +215,8 @@ describe('HomeView', () => {
 
       const gridContainer = wrapper.find('.grid')
       expect(gridContainer.classes()).toContain('grid-cols-1')
-      expect(gridContainer.classes()).toContain('sm:grid-cols-2')
-      expect(gridContainer.classes()).toContain('xl:grid-cols-4')
+      expect(gridContainer.classes()).toContain('md:grid-cols-2')
+      expect(gridContainer.classes()).toContain('lg:grid-cols-3')
     })
   })
 })

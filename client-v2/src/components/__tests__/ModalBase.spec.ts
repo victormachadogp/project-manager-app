@@ -23,7 +23,7 @@ describe('ModalBase', () => {
       },
     })
 
-    expect(wrapper.find('.space-y-4 p').text()).toBe('Conteúdo do Modal')
+    expect(wrapper.find('p').text()).toBe('Conteúdo do Modal')
   })
 
   it('deve emitir evento de cancel quando o botão cancelar for clicado', async () => {
