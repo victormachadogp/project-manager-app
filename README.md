@@ -2,7 +2,7 @@
 
 Um aplicativo completo de gerenciamento de projetos desenvolvido com Vue.js 3, TypeScript e Node.js, oferecendo duas versões de interface para diferentes experiências de usuário.
 
-## 📋 Índice
+## Índice
 
 - [Visão Geral](#visão-geral)
 - [Requisitos Atendidos](#requisitos-atendidos)
@@ -16,11 +16,11 @@ Um aplicativo completo de gerenciamento de projetos desenvolvido com Vue.js 3, T
 - [Melhorias Futuras](#melhorias-futuras)
 - [Observações](#observações)
 
-## 🎯 Visão Geral
+## Visão Geral
 
 O Project Manager App é uma aplicação web moderna para gerenciamento de projetos que permite criar, editar, visualizar e organizar projetos com informações detalhadas como cliente, datas de início e fim, imagens de capa e sistema de favoritos. A aplicação conta com funcionalidades avançadas de busca, filtros e validação progressiva de formulários.
 
-## ✅ Requisitos Atendidos
+## Requisitos Atendidos
 
 - **CRUD Completo**: Criação, leitura, atualização e exclusão de projetos
 - **Interface Responsiva**: Design adaptável para diferentes dispositivos
@@ -33,7 +33,7 @@ O Project Manager App é uma aplicação web moderna para gerenciamento de proje
 - **TypeScript**: Tipagem estática para maior confiabilidade
 - **Gerenciamento de Estado**: Pinia para estado global reativo
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 ### Estrutura do Projeto
 
@@ -76,7 +76,7 @@ project-manager-app/
 - **Interface Diferenciada**: Abordagem visual alternativa
 - **Mesma Funcionalidade**: Mantém todas as features principais
 
-## 🔧 Justificativas Técnicas
+## Justificativas Técnicas
 
 ### Fluxo de Validação Progressiva no Formulário
 
@@ -126,7 +126,7 @@ Essa separação reflete uma abordagem mais próxima de um cenário real, onde i
 
 O approach também reduziu dependências externas e custos adicionais para o ambiente atual.
 
-## 🔄 Fluxo da Aplicação
+## Fluxo da Aplicação
 
 ```mermaid
 graph TD
@@ -148,7 +148,7 @@ graph TD
     L --> A
 ```
 
-## ⚙️ Configuração do Ambiente
+## Configuração do Ambiente
 
 ### Pré-requisitos
 
@@ -218,7 +218,7 @@ node imageServer.js
 | JSON Server         | 3000  | http://localhost:3000 |
 | Servidor de Imagens | 3001  | http://localhost:3001 |
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Frontend
 
@@ -245,7 +245,7 @@ node imageServer.js
 - **ESLint**: Linter para JavaScript/TypeScript
 - **Prettier**: Formatador de código
 
-## 🧪 Testes
+## Testes
 
 O projeto possui cobertura abrangente de testes unitários:
 
@@ -269,7 +269,7 @@ npm run test:unit
 - Testes de integração para fluxos completos
 - Mocks para APIs externas
 
-## 👥 Duas Versões de Cliente
+## Duas Versões de Cliente
 
 ### Por Que Duas Versões?
 
@@ -302,7 +302,7 @@ O projeto oferece duas implementações de frontend com justificativas sólidas:
 - **Client**: Projetos corporativos que precisam de alta manutenibilidade
 - **Client-v2**: Protótipos e projetos que priorizam velocidade de desenvolvimento
 
-## 🚀 Melhorias Futuras
+## Melhorias Futuras
 
 ### Funcionalidades
 
@@ -333,7 +333,7 @@ O projeto oferece duas implementações de frontend com justificativas sólidas:
 - [ ] Service Workers
 - [ ] CDN para assets estáticos
 
-## 📝 Observações
+## Observações
 
 ### Desenvolvimento
 
