@@ -34,6 +34,7 @@ Um aplicativo completo de gerenciamento de projetos desenvolvido com Vue.js 3, T
 ## Índice
 
 - [Visão Geral](#visão-geral)
+- [Screenshots](#screenshots)
 - [Requisitos Atendidos](#requisitos-atendidos)
 - [Arquitetura](#arquitetura)
 - [Justificativas Técnicas](#justificativas-técnicas)
@@ -48,6 +49,14 @@ Um aplicativo completo de gerenciamento de projetos desenvolvido com Vue.js 3, T
 ## Visão Geral
 
 O Project Manager App é uma aplicação web moderna para gerenciamento de projetos que permite criar, editar, visualizar e organizar projetos com informações detalhadas como cliente, datas de início e fim, imagens de capa e sistema de favoritos. A aplicação conta com funcionalidades avançadas de busca, filtros e validação progressiva de formulários.
+
+## Screenshots
+
+### Client (Versão Principal)
+<img width="1858" height="924" alt="Screenshot 2025-07-20 at 01 08 27" src="https://github.com/user-attachments/assets/d5316abe-cc61-48f4-b921-d84ce3f9eff1" />
+
+### Client-v2 (Versão Alternativa)
+<img width="1872" height="923" alt="Screenshot 2025-07-20 at 01 08 47" src="https://github.com/user-attachments/assets/954957cc-aed1-4eeb-93bf-bcfb0c996e4a" />
 
 ## Requisitos Atendidos
 
