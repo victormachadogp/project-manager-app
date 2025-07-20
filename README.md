@@ -22,16 +22,42 @@ O Project Manager App é uma aplicação web moderna para gerenciamento de proje
 
 ## Requisitos Atendidos
 
-- **CRUD Completo**: Criação, leitura, atualização e exclusão de projetos
-- **Interface Responsiva**: Design adaptável para diferentes dispositivos
-- **Upload de Imagens**: Sistema de upload e gerenciamento de imagens de capa
-- **Sistema de Busca**: Busca em tempo real por nome e cliente
-- **Filtros Avançados**: Filtro por favoritos e ordenação personalizada
-- **Validação de Formulários**: Validação progressiva com feedback em tempo real
-- **Persistência de Dados**: Armazenamento em JSON Server com API REST
-- **Testes Unitários**: Cobertura de testes para componentes e composables
-- **TypeScript**: Tipagem estática para maior confiabilidade
-- **Gerenciamento de Estado**: Pinia para estado global reativo
+### Funcionalidades Principais:
+
+1. **Listagem Inicial:**
+
+   - Exibição de uma mensagem amigável quando não há projetos cadastrados, com botão para criar o primeiro projeto.
+
+2. **Exibição do Título e Contagem de Projetos:**
+
+   - Título "Projetos" e o número total de projetos listados dinamicamente.
+
+3. **Filtros de Listagem:**
+
+   - Exibição de projetos favoritos.
+   - Opção de ordenação:
+     - Ordem alfabética (padrão).
+     - Projetos iniciados mais recentemente.
+     - Projetos com data de finalização mais próxima.
+
+4. **Página de Criação e Edição:**
+
+   - Formulário para criar e editar projetos.
+   - Validações obrigatórias nos campos como nome, cliente e datas.
+
+5. **Modal de Confirmação:**
+
+   - Modal para confirmar a remoção de projetos.
+
+6. **Favoritar Projetos:**
+
+   - Botão para alternar entre favoritar e desfavoritar.
+
+7. **Barra de Busca:**
+   - Busca ativada ao digitar ao menos 3 caracteres.
+   - Histórico das 5 últimas buscas recentes.
+   - Destaque no texto para os termos correspondentes da busca.
+     - Tanto nomes de projetos como de clientes.
 
 ## Arquitetura
 
