@@ -53,9 +53,11 @@ O Project Manager App é uma aplicação web moderna para gerenciamento de proje
 ## Screenshots
 
 ### Client (Versão Principal)
+
 <img width="1858" height="924" alt="Screenshot 2025-07-20 at 01 08 27" src="https://github.com/user-attachments/assets/d5316abe-cc61-48f4-b921-d84ce3f9eff1" />
 
 ### Client-v2 (Versão Alternativa)
+
 <img width="1872" height="923" alt="Screenshot 2025-07-20 at 01 08 47" src="https://github.com/user-attachments/assets/954957cc-aed1-4eeb-93bf-bcfb0c996e4a" />
 
 ## Requisitos Atendidos
@@ -433,19 +435,8 @@ Versão alternativa desenvolvida por mim, onde explorei melhorias visuais e de u
 - Tailwind CSS oferece desenvolvimento rápido e consistente
 - Estrutura modular facilita manutenção e extensibilidade
 
-### Produção
-
-- Para deploy em produção, executar `npm run build` em cada cliente
-- Configurar variáveis de ambiente adequadas
-- Considerar uso de proxy reverso (nginx) para servir múltiplos clientes
-- Implementar backup regular do db.json
-
 ### Segurança
 
 - O servidor de imagens possui validação de tipo de arquivo
 - Limite de 5MB por upload de imagem
 - CORS configurado para desenvolvimento (ajustar para produção)
-
----
-
-**Desenvolvido com ❤️ usando Vue.js 3, TypeScript e Node.js**
