@@ -155,6 +155,17 @@ graph TD
 - Node.js 18+
 - npm ou yarn
 
+### Configuração das Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz do projeto e copie as seguintes variáveis:
+
+```bash
+VITE_API_PORT=3000
+VITE_IMAGE_SERVER_PORT=3001
+VITE_API_URL=http://localhost:3000
+VITE_IMAGE_API_URL=http://localhost:3001/images
+```
+
 ### Instalação e Execução
 
 #### 1. Frontend (Cliente Principal)
@@ -197,15 +208,6 @@ node imageServer.js
 ```
 
 **Porta:** http://localhost:3001
-
-### Variáveis de Ambiente
-
-O servidor de imagens suporta configuração via variáveis de ambiente:
-
-```bash
-# server/.env (opcional)
-IMAGE_SERVER_PORT=3001
-```
 
 ### Portas Utilizadas
 
