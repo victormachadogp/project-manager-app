@@ -47,13 +47,13 @@
         >
           <RouterLink
             :to="`/project/${project.id}`"
-            class="block px-4 py-2 text-left hover:bg-gray-100 text-sm text-[#695CCD]"
+            class="block px-4 py-2 text-left hover:bg-gray-100 text-sm text-[#717171]"
           >
             Editar
           </RouterLink>
           <button
             @click="$emit('delete')"
-            class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-[#695CCD] border-t border-[#ECECEC]"
+            class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-[#717171] border-t border-[#ECECEC]"
           >
             Excluir
           </button>
