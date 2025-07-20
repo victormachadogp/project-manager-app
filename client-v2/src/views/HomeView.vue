@@ -41,7 +41,7 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 pb-10">
           <ProjectCard
             v-for="project in filteredProjects"
             :key="project.id"
