@@ -159,7 +159,7 @@ graph TD
 
 Crie um arquivo `.env` na raiz do projeto e copie as seguintes variáveis:
 
-```bash
+```env
 VITE_API_PORT=3000
 VITE_IMAGE_SERVER_PORT=3001
 VITE_API_URL=http://localhost:3000
