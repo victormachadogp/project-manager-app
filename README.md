@@ -125,6 +125,7 @@ O sistema de validação implementado no `useProjectForm.ts` utiliza uma abordag
 **Benefícios:**
 
 - Reduz ansiedade do usuário (não mostra erros prematuramente)
+- Menos frustração e descoberta progressiva dos requisitos
 - Fornece feedback imediato após engajamento
 - Previne submissões inválidas
 - Melhora a taxa de conclusão de formulários
