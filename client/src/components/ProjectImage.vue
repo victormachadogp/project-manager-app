@@ -53,7 +53,7 @@
           </RouterLink>
           <button
             @click="$emit('delete')"
-            class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-[#695CCD] border-t border[#F4F2FF]"
+            class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-[#695CCD] border-t border-[#ECECEC]"
           >
             Excluir
           </button>
@@ -86,6 +86,6 @@ const toggleFavorite = () => emit('toggleFavorite')
 const handleImageError = (event: Event) => emit('handleImageError', event)
 
 defineExpose({
-  dropdownButton
+  dropdownButton,
 })
 </script>

@@ -2,8 +2,8 @@
   <div>
     <main
       :class="[
-        'my-15 flex justify-center h-screen max-w-[1860px] rounded mx-10.5 custom-height',
-        projects.length === 0 ? 'bg-white' : '',
+        'my-15 flex justify-center h-screen max-w-[1860px] rounded mx-auto custom-height',
+        projects.length === 0 ? 'bg-white !mx-10.5' : '',
       ]"
     >
       <div
@@ -45,7 +45,7 @@
         </div>
 
         <div
-          class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4 3xl:grid-cols-5 mt-5 pb-12"
+          class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 mt-5 pb-12"
         >
           <ProjectCard
             v-for="project in filteredProjects"
