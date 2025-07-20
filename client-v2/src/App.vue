@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import TheHeader from '@/components/TheHeader.vue'
 </script>
 
 <template>
-  <!-- <TheHeader /> -->
   <RouterView />
 </template>
 
@@ -15,6 +13,5 @@ import TheHeader from '@/components/TheHeader.vue'
 
 body {
   background-color: #f6f6f7;
-  /* font-family: 'Encode Sans Expanded', sans-serif; */
 }
 </style>
