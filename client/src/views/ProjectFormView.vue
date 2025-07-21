@@ -2,7 +2,7 @@
   <div class="max-w-[1860px] mx-auto my-10">
     <ProjectFormHeader :is-editing="isEditing" @back="handleBack" />
 
-    <form @submit.prevent="handleSubmit()" class="border border-[#DCDCDC] p-10 mx-5 rounded">
+    <form @submit.prevent="handleSubmit" class="border border-[#DCDCDC] p-10 mx-5 rounded">
       <div class="max-w-2xl mx-auto flex flex-col justify-center">
         <BaseInput
           id="name"
@@ -72,17 +72,15 @@
 
 <script setup lang="ts">
 import { onMounted, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import ProjectFormHeader from '../components/ProjectFormHeader.vue'
 import ProjectImageUpload from '../components/ProjectImageUpload.vue'
 import BaseInput from '../components/BaseInput.vue'
 import IconStartDate from '../components/icons/IconStartDate.vue'
 import IconEndDate from '../components/icons/IconEndDate.vue'
 import { useProjectForm } from '../composables/useProjectForm'
-import { useProjectImage } from '../composables/useProjectImage'
 
 const route = useRoute()
-const router = useRouter()
 const {
   form,
   isEditing,
@@ -90,19 +88,13 @@ const {
   errors,
   hasAttemptedSubmit,
   isFormValid,
-  handleSubmit: originalHandleSubmit,
+  handleSubmit,
   loadProject,
+  handleBack,
+  imagePreview,
+  handleImageUpload,
+  removeImage,
 } = useProjectForm()
-const { imagePreview, handleImageUpload, removeImage, pendingImageToDelete, deleteImageFromServer, resetPendingChanges } = useProjectImage(form)
-
-const handleSubmit = () => {
-  return originalHandleSubmit({ pendingImageToDelete, deleteImageFromServer })
-}
-
-const handleBack = () => {
-  resetPendingChanges()
-  router.push('/')
-}
 
 onMounted(async () => {
   await loadProject()

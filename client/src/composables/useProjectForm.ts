@@ -1,6 +1,7 @@
 import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useProjectStore } from '../stores/projectStore'
+import { useProjectImage } from './useProjectImage'
 import type { Project, ProjectFormData, ProjectFormErrors } from '../types/project'
 
 export function useProjectForm() {
@@ -19,6 +20,14 @@ export function useProjectForm() {
     coverImage: '',
   })
   const errors = ref<ProjectFormErrors>({})
+
+  // Integração com manipulação de imagens
+  const imageHandler = useProjectImage(form)
+
+  function handleBack() {
+    imageHandler.resetPendingChanges()
+    router.push('/')
+  }
 
   const isFormValid = computed(() => {
     const nameWords = form.value.name.trim().split(/\s+/)
@@ -72,7 +81,7 @@ export function useProjectForm() {
     return Object.keys(errors.value).length === 0
   }
 
-  async function handleSubmit(imageHandler?: { pendingImageToDelete: any; deleteImageFromServer: (path: string) => Promise<void> }) {
+  async function handleSubmit() {
     hasAttemptedSubmit.value = true
     validateForm()
     if (Object.keys(errors.value).length > 0) return
@@ -80,7 +89,7 @@ export function useProjectForm() {
     loading.value = true
     try {
       // Se existe imagem pendente para deletar, delete do servidor
-      if (imageHandler?.pendingImageToDelete.value) {
+      if (imageHandler.pendingImageToDelete.value) {
         await imageHandler.deleteImageFromServer(imageHandler.pendingImageToDelete.value)
       }
 
@@ -200,5 +209,10 @@ export function useProjectForm() {
     isFormValid,
     handleSubmit,
     loadProject,
+    handleBack,
+    // Exportações relacionadas à imagem
+    imagePreview: imageHandler.imagePreview,
+    handleImageUpload: imageHandler.handleImageUpload,
+    removeImage: imageHandler.removeImage,
   }
 }
