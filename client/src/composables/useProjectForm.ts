@@ -72,13 +72,18 @@ export function useProjectForm() {
     return Object.keys(errors.value).length === 0
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(imageHandler?: { pendingImageToDelete: any; deleteImageFromServer: (path: string) => Promise<void> }) {
     hasAttemptedSubmit.value = true
     validateForm()
     if (Object.keys(errors.value).length > 0) return
 
     loading.value = true
     try {
+      // Se existe imagem pendente para deletar, delete do servidor
+      if (imageHandler?.pendingImageToDelete.value) {
+        await imageHandler.deleteImageFromServer(imageHandler.pendingImageToDelete.value)
+      }
+
       if (isEditing.value) {
         const id = Array.isArray(route.params.id) ? route.params.id[0] : route.params.id
 

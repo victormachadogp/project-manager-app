@@ -7,6 +7,8 @@ export function useProjectImage(form: { value: { coverImage: string } }) {
     form.value.coverImage ? `http://localhost:3001${form.value.coverImage}` : ''
   )
   const error = ref<string | null>(null)
+  const pendingImageToDelete = ref<string | null>(null)
+  const originalImage = ref<string>(form.value.coverImage)
 
   watch(
     () => form.value.coverImage,
@@ -42,22 +44,33 @@ export function useProjectImage(form: { value: { coverImage: string } }) {
     }
   }
 
-  async function removeImage() {
+  function removeImage() {
     error.value = null
     if (form.value.coverImage) {
-      try {
-        await imageApi.delete(form.value.coverImage)
-        imagePreview.value = ''
-        form.value.coverImage = ''
+      pendingImageToDelete.value = form.value.coverImage
+      imagePreview.value = ''
+      form.value.coverImage = ''
 
-        const fileInput = document.getElementById('coverImage') as HTMLInputElement
-        if (fileInput) {
-          fileInput.value = ''
-        }
-      } catch (err) {
-        const apiError = err as ApiError
-        error.value = apiError.message || 'Erro ao remover a imagem. Tente novamente.'
+      const fileInput = document.getElementById('coverImage') as HTMLInputElement
+      if (fileInput) {
+        fileInput.value = ''
       }
+    }
+  }
+
+  async function deleteImageFromServer(imagePath: string) {
+    try {
+      await imageApi.delete(imagePath)
+    } catch (err) {
+      console.error('Erro ao deletar imagem do servidor:', err)
+    }
+  }
+
+  function resetPendingChanges() {
+    if (pendingImageToDelete.value) {
+      imagePreview.value = pendingImageToDelete.value ? `http://localhost:3001${pendingImageToDelete.value}` : ''
+      form.value.coverImage = pendingImageToDelete.value
+      pendingImageToDelete.value = null
     }
   }
 
@@ -66,5 +79,9 @@ export function useProjectImage(form: { value: { coverImage: string } }) {
     error,
     handleImageUpload,
     removeImage,
+    deleteImageFromServer,
+    resetPendingChanges,
+    pendingImageToDelete,
+    originalImage,
   }
 }
